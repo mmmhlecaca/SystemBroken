@@ -3,7 +3,6 @@ if game.CoreGui:FindFirstChild("SysBroker") then
 	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "System Broken",Text = "GUI Already loaded, rejoin to re-execute",Duration = 5;})
 	return
 end
-local version = 2
 --VARIABLES
 _G.AntiFlingToggled = false
 local Players = game:GetService("Players")
@@ -267,7 +266,6 @@ local Character_Section_Button = Instance.new("TextButton")
 local Target_Section_Button = Instance.new("TextButton")
 local Animations_Section_Button = Instance.new("TextButton")
 local Misc_Section_Button = Instance.new("TextButton")
-local Credits_Section_Button = Instance.new("TextButton")
 local Game_Section = Instance.new("ScrollingFrame")
 local AntiRagdoll_Button = Instance.new("TextButton")
 local PotionFling_Button = Instance.new("TextButton")
@@ -295,7 +293,6 @@ local FreePushTool_Button = Instance.new("TextButton")
 local Home_Section = Instance.new("ScrollingFrame")
 local Profile_Image = Instance.new("ImageLabel")
 local Welcome_Label = Instance.new("TextLabel")
-local Announce_Label = Instance.new("TextLabel")
 local Character_Section = Instance.new("ScrollingFrame")
 local WalkSpeed_Button = Instance.new("TextButton")
 local WalkSpeed_Input = Instance.new("TextBox")
@@ -362,8 +359,6 @@ local Serverhop_Button = Instance.new("TextButton")
 local Explode_Button = Instance.new("TextButton")
 local FreeEmotes_Button = Instance.new("TextButton")
 local ChatBox_Input = Instance.new("TextBox")
-local Credits_Section = Instance.new("ScrollingFrame")
-local Credits_Label = Instance.new("TextLabel")
 local Crown = Instance.new("ImageLabel")
 local Assets = Instance.new("Folder")
 local Ticket_Asset = Instance.new("ImageButton")
@@ -522,21 +517,6 @@ Misc_Section_Button.TextColor3 = Color3.fromRGB(0, 0, 0)
 Misc_Section_Button.TextScaled = true
 Misc_Section_Button.TextSize = 14.000
 Misc_Section_Button.TextWrapped = true
-
-Credits_Section_Button.Name = "Credits_Section_Button"
-Credits_Section_Button.Parent = SectionList
-Credits_Section_Button.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
-Credits_Section_Button.BackgroundTransparency = 0.500
-Credits_Section_Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Credits_Section_Button.BorderSizePixel = 0
-Credits_Section_Button.Position = UDim2.new(0, 0, 0, 265)
-Credits_Section_Button.Size = UDim2.new(0, 105, 0, 30)
-Credits_Section_Button.Font = Enum.Font.Oswald
-Credits_Section_Button.Text = "Credits"
-Credits_Section_Button.TextColor3 = Color3.fromRGB(0, 0, 0)
-Credits_Section_Button.TextScaled = true
-Credits_Section_Button.TextSize = 14.000
-Credits_Section_Button.TextWrapped = true
 
 Game_Section.Name = "Game_Section"
 Game_Section.Parent = Background
@@ -933,21 +913,6 @@ Welcome_Label.TextSize = 24.000
 Welcome_Label.TextWrapped = true
 Welcome_Label.TextXAlignment = Enum.TextXAlignment.Left
 Welcome_Label.TextYAlignment = Enum.TextYAlignment.Top
-
-Announce_Label.Name = "Announce_Label"
-Announce_Label.Parent = Home_Section
-Announce_Label.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-Announce_Label.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Announce_Label.BorderSizePixel = 0
-Announce_Label.Position = UDim2.new(0, 25, 0, 150)
-Announce_Label.Size = UDim2.new(0, 350, 0, 150)
-Announce_Label.Font = Enum.Font.SourceSans
-Announce_Label.Text = loadstring(game:HttpGet("https://raw.githubusercontent.com/mmmhlecaca/SystemBroken/main/announce"))()
-Announce_Label.TextColor3 = Color3.fromRGB(0, 255, 255)
-Announce_Label.TextSize = 24.000
-Announce_Label.TextWrapped = true
-Announce_Label.TextXAlignment = Enum.TextXAlignment.Left
-Announce_Label.TextYAlignment = Enum.TextYAlignment.Top
 
 Character_Section.Name = "Character_Section"
 Character_Section.Parent = Background
@@ -1890,34 +1855,6 @@ ChatBox_Input.TextWrapped = true
 ChatBox_Input.TextXAlignment = Enum.TextXAlignment.Left
 ChatBox_Input.TextYAlignment = Enum.TextYAlignment.Top
 
-Credits_Section.Name = "Credits_Section"
-Credits_Section.Parent = Background
-Credits_Section.Active = true
-Credits_Section.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Credits_Section.BackgroundTransparency = 1.000
-Credits_Section.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Credits_Section.BorderSizePixel = 0
-Credits_Section.Position = UDim2.new(0, 105, 0, 30)
-Credits_Section.Size = UDim2.new(0, 395, 0, 320)
-Credits_Section.Visible = false
-Credits_Section.CanvasSize = UDim2.new(0, 0, 0.8, 0)
-Credits_Section.ScrollBarThickness = 5
-
-Credits_Label.Name = "Credits_Label"
-Credits_Label.Parent = Credits_Section
-Credits_Label.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-Credits_Label.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Credits_Label.BorderSizePixel = 0
-Credits_Label.Position = UDim2.new(0, 25, 0, 150)
-Credits_Label.Size = UDim2.new(0, 350, 0, 150)
-Credits_Label.Font = Enum.Font.SourceSans
-Credits_Label.Text = "Made by: MalwareHUB \nDiscord: system_calix\nVersion: "..version
-Credits_Label.TextColor3 = Color3.fromRGB(0, 255, 255)
-Credits_Label.TextSize = 24.000
-Credits_Label.TextWrapped = true
-Credits_Label.TextXAlignment = Enum.TextXAlignment.Left
-Credits_Label.TextYAlignment = Enum.TextYAlignment.Top
-
 Crown.Name = "Crown"
 Crown.Parent = Background
 Crown.AnchorPoint = Vector2.new(0.300000012, 0.800000012)
@@ -2228,10 +2165,6 @@ end)
 
 Misc_Section_Button.MouseButton1Click:Connect(function()
 	ChangeSection(Misc_Section_Button)
-end)
-
-Credits_Section_Button.MouseButton1Click:Connect(function()
-	ChangeSection(Credits_Section_Button)
 end)
 
 --GAME SECTION BUTTONS
@@ -3548,20 +3481,6 @@ plr.CharacterAdded:Connect(function(x)
 		game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, plr)
 	end
 	appearance:Destroy()
-end)
-
-task.spawn(function()
-	while task.wait(10) do
-		pcall(function()
-			local GuiVersion = loadstring(game:HttpGet("https://raw.githubusercontent.com/mmmhlecaca/SystemBroken/main/version"))()
-			if version<GuiVersion then
-				SendNotify("System Broken","You are not using the latest version, please run the script again.",5)
-				task.wait(5)
-				SysBroker:Destroy()
-				game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, plr)
-			end
-		end)
-	end
 end)
 
 OpenClose.MouseButton1Click:Connect(function()
